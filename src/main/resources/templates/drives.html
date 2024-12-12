@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Placement Drives</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Set background image */
+       
+        th, td {
+            color: white; /* Set text color for table cells */
+        }
+
+		body{
+			color:white;
+		}
+		.container {
+		            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay for better contrast */
+		            padding: 100px; /* Increased padding around the content */
+		            border-radius: 80px; /* Rounded corners */
+		            height: 100%; /* Increased height (you can adjust this value as needed) */
+		            display: flex; /* Use flex to center content */
+		            flex-direction: column; /* Stack content vertically */
+		            justify-content: center; /* Center content vertically */
+		            align-items: center; /* Center content horizontally */
+		            margin: auto; /* Center the container in the viewport */
+		        }
+
+        .table {
+           
+			width: 100%; /* Ensure table takes the full width */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mt-3">Placement Drives</h2>
+        <a href="/new" class="btn btn-success mb-3">Add Company</a>
+        
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Company Name</th>
+                    <th>Status</th>
+                    <th>Skills</th>
+                    <th>Salary</th>
+                    <th>Location</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="drive, iterStat : ${drives}">
+                    <td th:text="${iterStat.count}"></td>
+                    <td th:text="${drive.companyName}"></td>
+                    <td th:text="${drive.status}"></td>
+                    <td th:text="${drive.skills}"></td>
+                    <td th:text="${drive.salary}"></td>
+                    <td th:text="${drive.location}"></td>
+                    <td><a th:href="@{/edit/{id}(id=${drive.id})}" class="btn btn-warning">Edit</a></td>
+                    <td><a th:href="@{/delete/{id}(id=${drive.id})}" class="btn btn-danger">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
